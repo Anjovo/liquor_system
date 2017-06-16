@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="liquor_system:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="system.war">
+      <element id="artifact" artifact-name="liquor_system:war exploded" />
+    </root>
+  </artifact>
+</component>
