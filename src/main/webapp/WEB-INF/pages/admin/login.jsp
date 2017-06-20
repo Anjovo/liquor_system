@@ -10,74 +10,131 @@
 <head>
     <base href="<%=basePath%>">
 
-    <title>My JSP 'login.jsp' starting page</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>后台登录系统</title>
 
-    <meta http-equiv="pragma" content="no-cache">
-    <meta http-equiv="cache-control" content="no-cache">
-    <meta http-equiv="expires" content="0">
-    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-    <meta http-equiv="description" content="This is my page">
-    <!-- Bootstrap 3.3.6 -->
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-    <!-- Font Awesome -->
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-    <!-- Ionicons -->
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="css/admin/AdminLTE.min.css">
-    <!-- iCheck -->
-    <link rel="stylesheet" href="plugins/iCheck/square/blue.css">
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+    <style type="text/css">
+    </style>
+    <script type="text/JavaScript">
+        <!--
+        function isValid() {
+            if (document.form.wnum.value == "") {
+                window.alert("请填写用户名!");
+                document.form.wnum.focus();
+                return false;
+            }
+            if (document.form.word.value == "") {
+                window.alert("请填写密码！");
+                document.form.word.focus();
+                return false;
+            }
+        }
+
+        //-->
+    </script>
 </head>
 
 <body class="hold-transition login-page">
 
-<div class="login-box">
-    <div class="login-logo">
-        <a href="javascript:;"><b>智慧水利</b></a>
-    </div>
-    <!-- /.login-logo -->
-    <div class="login-box-body">
-        <p class="login-box-msg">后台登录</p>
+<form name="form" id="form" method="post" action="log.jsp" onSubmit="return isValid();">
 
-        <form action="user/userAction!login" method="post">
-            <div class="form-group has-feedback">
-                <input id="userName" name="user.username" type="text"
-                       class="form-control" placeholder="账 号" required> <span
-                    class="glyphicon glyphicon-user form-control-feedback"></span>
-            </div>
-            <div class="form-group has-feedback">
-                <input id="password" name="user.password" type="password"
-                       class="form-control" placeholder="密 码" required> <span
-                    class="glyphicon glyphicon-lock form-control-feedback"></span>
-            </div>
-            <div class="row">
-                <div class="col-xs-8">
-                    <div class="checkbox icheck">
-                        <label> <input type="checkbox"> 记住我
-                        </label>
-                    </div>
-                </div>
-                <!-- /.col -->
-                <div class="col-xs-4">
-                    <button type="submit" class="btn btn-primary btn-block btn-flat">登录</button>
-                </div>
-                <!-- /.col -->
-            </div>
-        </form>
+    <table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
 
-    </div>
-    <!-- /.login-box-body -->
-</div>
-<!-- /.login-box -->
+        <tr>
+            <td bgcolor="#02395f">&nbsp;</td>
+        </tr>
+        <tr>
+            <td height="607" align="center" background="images/login_02.gif">
+                <table width="974" border="0" cellspacing="0" cellpadding="0">
+
+                    <tr>
+                        <td height="331" background="images/login_01.jpg">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td height="116">
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td width="393" height="116" background="images/login_05.gif">&nbsp;</td>
+                                    <td width="174">
+                                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                            <tr>
+                                                <td height="81" background="images/login_06.gif">
+                                                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+
+                                                        <tr>
+                                                            <td width="24%">
+                                                                <div align="center"><font
+                                                                        style="height:1;font-size:9pt; color:#bfdbeb;filter:glow(color=#1070a3,strength=1)">用户</font>
+                                                                </div>
+                                                            </td>
+                                                            <td width="76%" height="25"><input type="text" name="wnum"
+                                                                                               style="width:125px; height:20px; background:#32a2e3; font-size:12px; border:solid 1px #0468a7; color:#14649f;">
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <div align="center"><font
+                                                                        style="height:1;font-size:9pt; color:#bfdbeb;filter:glow(color=#1070a3,strength=1)">密码</font>
+                                                                </div>
+                                                            </td>
+                                                            <td height="25"><input type="password" name="word"
+                                                                                   style="width:125px; height:20px; background:#32a2e3; font-size:12px; border:solid 1px #0468a7; color:#14649f;">
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td height="35">
+                                                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                                        <tr>
+                                                            <td width="50" height="35"><img src="images/login_08.gif"
+                                                                                            width="50" height="35"></td>
+                                                            <td width="46"><INPUT type=image src="images/login_09.gif"
+                                                                                  width="46" height="35" border="0"
+                                                                                  value=Submit name=submit></td>
+
+                                                            <td width="45"><input type=image src="images/login_10.gif"
+                                                                                  width="46" height="35" border="0"
+                                                                                  value="reset" name=reset onclick="javascript:window.location.reload();return false">
+                                                            </td>
+                                                            <td width="33"><img src="images/login_11.gif" width="33"
+                                                                                height="35"></td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td width="407" background="images/login_07.gif">&nbsp;</td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td height="160" background="images/login_12.gif">&nbsp;</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td bgcolor="#02609c">&nbsp;</td>
+        </tr>
+    </table>
+</form>
 
 <!-- jQuery 2.2.3 <-->
 <script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
