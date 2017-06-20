@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -36,23 +38,26 @@ public class MainController {
     }
     @RequestMapping(value = "/admin/admin_login", method = RequestMethod.GET)
     public String login() {
-        // 返回pages目录下的admin/users.jsp页面
         return "admin/login";
     }
-    @RequestMapping(value = "/admin/login", method = RequestMethod.POST)
-    public String checkUsers(@ModelAttribute("user") UserEntity userEntity) {
+    @RequestMapping(value = "/admin/login_check", method = RequestMethod.POST)
+    public String checkUsers(HttpServletRequest request,@ModelAttribute("user") UserEntity userEntity) {
         // 查询user表中所有记录
         List<UserEntity> userList = userRepository.findAll();
 
         if(userList.size() > 0){
             if(userList.get(0).getPassword().equals(userEntity.getPassword())){
                 // 返回pages目录下的admin/users.jsp页面
+                //TODO 登陆成功,保存session
+                HttpSession session =request.getSession();
+                session.setAttribute("isLogin",userEntity.getNickname());
                 return "index";
             }
         }
         // 返回pages目录下的admin/users.jsp页面
         return "admin/login";
     }
+
 //
 //    @RequestMapping(value = "/admin/users", method = RequestMethod.GET)
 //    public String getUsers(ModelMap modelMap) {

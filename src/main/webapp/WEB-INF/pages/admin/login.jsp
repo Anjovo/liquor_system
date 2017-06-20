@@ -1,8 +1,8 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8" %>
 <%
     String path = request.getContextPath();
-    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+            + path + "/";
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -42,42 +42,44 @@
 
 <div class="login-box">
     <div class="login-logo">
-    <a href="javascript:;"><b>智慧水利</b></a>
+        <a href="javascript:;"><b>智慧水利</b></a>
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
-    <p class="login-box-msg">后台登录</p>
+        <p class="login-box-msg">后台登录</p>
 
-    <form action="user/userAction!login" method="post">
-    <div class="form-group has-feedback">
-    <input id="userName" name="user.username" type="text" class="form-control" placeholder="账 号" required>
-<span class="glyphicon glyphicon-user form-control-feedback"></span>
-    </div>
-    <div class="form-group has-feedback">
-    <input id="password" name="user.password" type="password" class="form-control" placeholder="密 码" required>
-<span class="glyphicon glyphicon-lock form-control-feedback"></span>
-    </div>
-    <div class="row">
-    <div class="col-xs-8">
-    <div class="checkbox icheck">
-    <label> <input type="checkbox"> 记住我
-    </label>
-    </div>
-    </div>
-    <!-- /.col -->
-    <div class="col-xs-4">
-    <button type="submit" class="btn btn-primary btn-block btn-flat">登录</button>
-    </div>
-    <!-- /.col -->
-    </div>
-    </form>
+        <form action="user/userAction!login" method="post">
+            <div class="form-group has-feedback">
+                <input id="userName" name="user.username" type="text"
+                       class="form-control" placeholder="账 号" required> <span
+                    class="glyphicon glyphicon-user form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback">
+                <input id="password" name="user.password" type="password"
+                       class="form-control" placeholder="密 码" required> <span
+                    class="glyphicon glyphicon-lock form-control-feedback"></span>
+            </div>
+            <div class="row">
+                <div class="col-xs-8">
+                    <div class="checkbox icheck">
+                        <label> <input type="checkbox"> 记住我
+                        </label>
+                    </div>
+                </div>
+                <!-- /.col -->
+                <div class="col-xs-4">
+                    <button type="submit" class="btn btn-primary btn-block btn-flat">登录</button>
+                </div>
+                <!-- /.col -->
+            </div>
+        </form>
 
     </div>
     <!-- /.login-box-body -->
-    </div>
-    <!-- /.login-box -->
+</div>
+<!-- /.login-box -->
 
-    <!-- jQuery 2.2.3 <-->
+<!-- jQuery 2.2.3 <-->
 <script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
 <script src="bootstrap/js/bootstrap.min.js"></script>
