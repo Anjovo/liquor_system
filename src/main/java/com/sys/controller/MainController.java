@@ -2,6 +2,7 @@ package com.sys.controller;
 
 import com.sys.model.UserEntity;
 import com.sys.repository.UserRepository;
+import org.hibernate.criterion.Example;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -43,8 +44,22 @@ public class MainController {
     @RequestMapping(value = "/admin/login_check", method = RequestMethod.POST)
     public String checkUsers(HttpServletRequest request,@ModelAttribute("user") UserEntity userEntity) {
         // 查询user表中所有记录
-        List<UserEntity> userList = userRepository.findAll();
+        //查找全部
+//        userRepository.findAll();
+//        //分页查询全部,返回封装了分页信息
+//        Page<User> pageInfo = userRepository.findAll(new PageRequest(1, 3, Sort.Direction.ASC,"id"));
+//        //查找全部,并排序
+//        userRepository.findAll(new Sort(new Sort.Order(Sort.Direction.ASC,"id")));
+//
+//        User user = new User();
+//        user.setName("小红");
+//        //条件查询,可以联合分页,排序
+//        userRepository.findAll(Example.of(user));
+//        //查询单个
+//        userRepository.findOne(1);
 
+        List<UserEntity> userList = userRepository.findByLastname(userEntity.getNickname());
+        System.out.print("登录检查:"+userEntity.getNickname()+"--"+userEntity.getPassword());
         if(userList.size() > 0){
             if(userList.get(0).getPassword().equals(userEntity.getPassword())){
                 // 返回pages目录下的admin/users.jsp页面
@@ -78,22 +93,22 @@ public class MainController {
 //        return "admin/addUser";
 //    }
 //
-//    // post请求，处理添加用户请求，并重定向到用户管理页面
-//    @RequestMapping(value = "/admin/users/addP", method = RequestMethod.POST)
-//    public String addUserPost(@ModelAttribute("user") UserEntity userEntity) {
-//        // 注意此处，post请求传递过来的是一个UserEntity对象，里面包含了该用户的信息
-//        // 通过@ModelAttribute()注解可以获取传递过来的'user'，并创建这个对象
-//
-//        // 数据库中添加一个用户，该步暂时不会刷新缓存
-//        //userRepository.save(userEntity);
-//
-//        // 数据库中添加一个用户，并立即刷新缓存
-//        userRepository.saveAndFlush(userEntity);
-//
-//        // 重定向到用户管理页面，方法为 redirect:url
-//        return "redirect:/admin/users";
-//    }
-//
+    // post请求，处理添加用户请求，并重定向到用户管理页面
+    @RequestMapping(value = "/admin/users/addP", method = RequestMethod.POST)
+    public String addUserPost(@ModelAttribute("user") UserEntity userEntity) {
+        // 注意此处，post请求传递过来的是一个UserEntity对象，里面包含了该用户的信息
+        // 通过@ModelAttribute()注解可以获取传递过来的'user'，并创建这个对象
+
+        // 数据库中添加一个用户，该步暂时不会刷新缓存
+        //userRepository.save(userEntity);
+        System.out.print("添加用户:"+userEntity.getNickname()+"--"+userEntity.getPassword());
+        // 数据库中添加一个用户，并立即刷新缓存
+        userRepository.saveAndFlush(userEntity);
+
+        // 重定向到用户管理页面，方法为 redirect:url
+        return "redirect:/admin/users";
+    }
+
 //    // 查看用户详情
 //// @PathVariable可以收集url中的变量，需匹配的变量用{}括起来
 //// 例如：访问 localhost:8080/admin/users/show/1 ，将匹配 id = 1

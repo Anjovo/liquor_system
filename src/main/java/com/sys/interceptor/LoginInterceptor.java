@@ -11,14 +11,20 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class LoginInterceptor extends HandlerInterceptorAdapter {
     private static final String[] IGNORE_URI = {"/admin"};//需要拦截的地址
+    private static final String[] IGNORE_URI1 = {"/admin/login_check","/admin/admin_login"};//不需要拦截的地址
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        boolean flag = false;
+        boolean flag = true;
         String url = request.getRequestURL().toString();
         System.out.println(">>>: " + url);
+        for (String s : IGNORE_URI1) {
+            if (url.indexOf(s)!=-1) {
+                return true;
+            }
+        }
         for (String s : IGNORE_URI) {
             if (url.indexOf(s)!=-1) {
-                flag = true;
+                flag = false;
                 break;
             }
         }

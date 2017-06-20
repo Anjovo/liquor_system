@@ -8,6 +8,8 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * Created by Administrator on 2017/6/1.
  * 在JpaRepository中，定义了几个简化的操作数据库的方法：
@@ -19,4 +21,6 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository
 public interface UserRepository extends JpaRepository<UserEntity, Integer> {
 
+    @Query("select u from UserEntity u where u.nickname = :nickname")
+    List<UserEntity> findByLastname(@Param("nickname") String nickname);
 }

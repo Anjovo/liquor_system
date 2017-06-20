@@ -14,17 +14,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <title>后台登录系统</title>
-
-    <!-- 新 Bootstrap 核心 CSS 文件 -->
-    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <title>后台管理系统</title>
 
     <style type="text/css">
     </style>
@@ -49,7 +39,7 @@
 
 <body class="hold-transition login-page">
 
-<form name="form" id="form" method="post" action="log.jsp" onSubmit="return isValid();">
+<form name="form" id="form" method="post" action="/admin/login_check" commondName="user" onSubmit="return isValid();">
 
     <table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
 
@@ -57,7 +47,7 @@
             <td bgcolor="#02395f">&nbsp;</td>
         </tr>
         <tr>
-            <td height="607" align="center" background="images/login_02.gif">
+            <td align="center" background="images/login_02.gif">
                 <table width="974" border="0" cellspacing="0" cellpadding="0">
 
                     <tr>
@@ -80,7 +70,9 @@
                                                                         style="height:1;font-size:9pt; color:#bfdbeb;filter:glow(color=#1070a3,strength=1)">用户</font>
                                                                 </div>
                                                             </td>
-                                                            <td width="76%" height="25"><input type="text" name="wnum"
+                                                            <td width="76%" height="25"><input type="text"
+                                                                                               name="nickname"
+                                                                                               id="nickname"
                                                                                                style="width:125px; height:20px; background:#32a2e3; font-size:12px; border:solid 1px #0468a7; color:#14649f;">
                                                             </td>
                                                         </tr>
@@ -90,7 +82,8 @@
                                                                         style="height:1;font-size:9pt; color:#bfdbeb;filter:glow(color=#1070a3,strength=1)">密码</font>
                                                                 </div>
                                                             </td>
-                                                            <td height="25"><input type="password" name="word"
+                                                            <td height="25"><input type="password" name="password"
+                                                                                   id="password"
                                                                                    style="width:125px; height:20px; background:#32a2e3; font-size:12px; border:solid 1px #0468a7; color:#14649f;">
                                                             </td>
                                                         </tr>
@@ -109,7 +102,8 @@
 
                                                             <td width="45"><input type=image src="images/login_10.gif"
                                                                                   width="46" height="35" border="0"
-                                                                                  value="reset" name=reset onclick="javascript:window.location.reload();return false">
+                                                                                  value="reset" name=reset
+                                                                                  onclick="javascript:window.location.reload();return false">
                                                             </td>
                                                             <td width="33"><img src="images/login_11.gif" width="33"
                                                                                 height="35"></td>
@@ -135,13 +129,6 @@
         </tr>
     </table>
 </form>
-
-<!-- jQuery 2.2.3 <-->
-<script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
-<!-- Bootstrap 3.3.6 -->
-<script src="bootstrap/js/bootstrap.min.js"></script>
-<!-- iCheck -->
-<script src="plugins/iCheck/icheck.min.js"></script>
 
 </body>
 </html>
