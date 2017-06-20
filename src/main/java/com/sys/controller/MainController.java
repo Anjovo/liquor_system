@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
-/**
+/**SpringMVC搭建:http://blog.csdn.net/lijinzhou2017/article/details/59516288
  * MVC框架有model、view、controller三部分组成。
  * model一般为一些基本的Java Bean，
  * view用于进行相应的页面显示，controller用于处理网站的请求。
