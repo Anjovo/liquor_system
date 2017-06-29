@@ -174,7 +174,7 @@ public class MainController {
             try{
                 mResultBean.setCode("200");
                 mResultBean.setMessage("查询成功");
-                mResultBean.setResult("" + new Gson().toJson(userList));
+                mResultBean.setResult(userList);
             }catch (Exception e){
                 mResultBean.setCode("-1");
                 mResultBean.setMessage("服务器系统异常");

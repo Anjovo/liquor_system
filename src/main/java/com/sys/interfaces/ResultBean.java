@@ -6,7 +6,7 @@ package com.sys.interfaces;
 public class ResultBean {
     private String code;
     private String message;
-    private String result;
+    private Object result;
 
     public String getCode() {
         return code;
@@ -24,11 +24,11 @@ public class ResultBean {
         this.message = message;
     }
 
-    public String getResult() {
+    public Object getResult() {
         return result;
     }
 
-    public void setResult(String result) {
+    public void setResult(Object result) {
         this.result = result;
     }
 }
