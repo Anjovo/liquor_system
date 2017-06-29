@@ -1,20 +1,21 @@
 package com.sys.controller;
 
+import com.google.gson.Gson;
+import com.sys.interfaces.ResultBean;
 import com.sys.model.UserEntity;
 import com.sys.repository.UserRepository;
 import org.hibernate.criterion.Example;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**SpringMVC搭建:http://blog.csdn.net/lijinzhou2017/article/details/59516288
+ * http://mvnrepository.com/
  * MVC框架有model、view、controller三部分组成。
  * model一般为一些基本的Java Bean，
  * view用于进行相应的页面显示，controller用于处理网站的请求。
@@ -156,4 +157,29 @@ public class MainController {
 //        userRepository.flush();
 //        return "redirect:/admin/users";
 //    }
+
+    //这里是写对外接口 API
+    /**一般在异步获取数据时使用，在使用@RequestMapping后，返回值通常解析为跳转路径，
+     * 加上@responsebody后返回结果不会被解析为跳转路径，而是直接写入HTTP response body中。
+     * 比如异步获取json数据，加上@responsebody后，会直接返回json数据。**/
+    @RequestMapping(value = "/users/info", method = RequestMethod.GET)
+    @ResponseBody
+    public ResultBean getUserInfo(@RequestParam("nickname") String username){
+        ResultBean mResultBean = new ResultBean();
+        List<UserEntity> userList = userRepository.findByLastname(username);
+        if(userList == null || userList.size() == 0){
+            mResultBean.setCode("0");//没有查询到对应的用户信息
+            mResultBean.setMessage("没有查询到对应的用户信息");
+        }else{
+            try{
+                mResultBean.setCode("200");
+                mResultBean.setMessage("查询成功");
+                mResultBean.setResult("" + new Gson().toJson(userList));
+            }catch (Exception e){
+                mResultBean.setCode("-1");
+                mResultBean.setMessage("服务器系统异常");
+            }
+        }
+        return mResultBean;
+    }
 }
